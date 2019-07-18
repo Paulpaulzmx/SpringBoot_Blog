@@ -56,9 +56,9 @@ public class UserController {
      * 新建用户（赋予id值）
      */
     @PostMapping
-    public ModelAndView saveOrUpdateUser(User user, Model model){
+    public ModelAndView saveOrUpdateUser(User user){
         user = userRepository.saveOrUpdateUser(user);
-        return new ModelAndView("users/form", "userModel", model);
+        return new ModelAndView("redirect:/users");
     }
 
     /**
