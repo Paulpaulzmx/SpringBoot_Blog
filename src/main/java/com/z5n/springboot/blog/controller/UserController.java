@@ -1,5 +1,6 @@
 package com.z5n.springboot.blog.controller;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import com.z5n.springboot.blog.domain.User;
 import com.z5n.springboot.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,14 +47,38 @@ public class UserController {
      */
     @GetMapping("/form")
     public ModelAndView createForm(Model model){
+        model.addAttribute("user", new User());
         model.addAttribute("title", "创建用户");
         return new ModelAndView("users/form", "userModel", model);
     }
 
+    /**
+     * 新建用户（赋予id值）
+     */
     @PostMapping
-    public ModelAndView saveOrUpdateUser(User user){
+    public ModelAndView saveOrUpdateUser(User user, Model model){
         user = userRepository.saveOrUpdateUser(user);
-        return new ModelAndView("users/form", "userModel", user);
+        return new ModelAndView("users/form", "userModel", model);
+    }
+
+    /**
+     * 根据id删除用户
+     */
+    @GetMapping("/delete/{id}")
+    public ModelAndView deleteById(@PathVariable("id") Long id, Model model){
+        userRepository.deleteUser(id);
+        return new ModelAndView("redirect:/users");
+    }
+
+    /**
+     * 根据id修改用户
+     */
+    @GetMapping("/modify/{id}")
+    public ModelAndView modify(@PathVariable("id") Long id, Model model){
+        User user = userRepository.getUserById(id);
+        model.addAttribute("user", user);
+        model.addAttribute("title", "修改用户");
+        return new ModelAndView("users/form", "userModel", model);
     }
 
 }
