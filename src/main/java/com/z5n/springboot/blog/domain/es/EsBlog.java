@@ -1,8 +1,8 @@
 package com.z5n.springboot.blog.domain.es;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
@@ -11,6 +11,9 @@ import java.io.Serializable;
  */
 @Document(indexName = "blog", type="blog")
 public class EsBlog implements Serializable {
+
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     private String id;

@@ -54,6 +54,7 @@ public class EsBlogRepositoryTest {
     @Before
     public void initRepositoryData() {
         esBlogRepository.deleteAll();
+        System.out.println("deleteAll()");
         esBlogRepository.save(new EsBlog("相思", "王维的相思",
                 "红豆生南国，春来发机制，愿君多采颉，此物最相思"));
         esBlogRepository.save(new EsBlog("登鹳雀楼", "王之涣的登鹳雀楼",
