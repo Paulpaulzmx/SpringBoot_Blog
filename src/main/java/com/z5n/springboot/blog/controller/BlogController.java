@@ -1,6 +1,5 @@
 package com.z5n.springboot.blog.controller;
 
-
 import com.z5n.springboot.blog.domain.es.EsBlog;
 import com.z5n.springboot.blog.repository.es.EsBlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +13,27 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+/**
+ * Blog控制器
+ *
+ * @author zmx
+ */
 @RestController
 @RequestMapping("/blogs")
 public class BlogController {
+
+    /**
+     * 根据顺序和关键词查询博客
+     * @param order     顺序，new或old
+     * @param keyword   关键词
+     * @return          重定向到查询页面
+     */
+    @GetMapping
+    public String listBlogs(@RequestParam(value = "order", required = false, defaultValue = "new") String order,
+                            @RequestParam(value = "keyword", required = false) Long keyword) {
+        System.out.println("order:" + order + "keyword" + keyword);
+        return "redirect:/index?order=" + order + "&keyword=" + keyword;
+    }
 
     @Autowired
     private EsBlogRepository esBlogRepository;

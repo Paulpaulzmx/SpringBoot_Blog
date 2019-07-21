@@ -36,3 +36,8 @@ body {
     margin-bottom: auto;
     text-align: center;
 }
+
+/*登陆成功的顶部登陆状态*/
+.login-success-navbar{
+    display: flex;
+}

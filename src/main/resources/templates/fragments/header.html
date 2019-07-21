@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       th:fragment="header">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 
-<!--    <script src="/js/jquery-3.4.1.js"></script>-->
-    <script src="/js/bootstrap.js"></script>
+        <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
 
     <!-- 自定义css-->
-    <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/blog.css" th:href="@{/css/blog.css}">
 
     <!-- BootStrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css">
-
+    <link rel="stylesheet" href="/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
 
     <!-- Tether core CSS -->
-    <link rel="stylesheet" href="/css/tether.min.css">
+    <link rel="stylesheet" href="/css/tether.min.css" th:href="@{/css/tether.min.css}">
 
     <!-- Font-Awesome CSS -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
     <!-- NProgress CSS-->
-    <link rel="stylesheet" href="/css/nprogress.css">
+    <link rel="stylesheet" href="/css/nprogress.css" th:href="@{/css/nprogress.css}">
     <!-- thinker-md CSS-->
-    <link rel="stylesheet" href="/css/thinker-md.vendor.css">
+    <link rel="stylesheet" href="/css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}">
     <!-- BootStrap tags CSS-->
-    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css" th:href="@{/css/bootstrap-tagsinput.css}">
     <!-- Component-chosen CSS-->
-    <link rel="stylesheet" href="/css/component-chosen.css">
+    <link rel="stylesheet" href="/css/component-chosen.css" th:href="@{/css/component-chosen.css}">
     <!-- Toastr CSS-->
-    <link rel="stylesheet" href="/css/toastr.min.css">
+    <link rel="stylesheet" href="/css/toastr.min.css" th:href="@{/css/toastr.min.css}">
     <!-- cropBox CSS -->
-<!--    <link rel="stylesheet" href="/css/jquery.cropbox.css" th:href="@{/css/jquery.cropbox.css}">-->
+    <link rel="stylesheet" href="/css/jquery.cropbox.css" th:href="@{/css/jquery.cropbox.css}">
 
 </head>
 <body>
@@ -40,7 +40,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -53,21 +54,23 @@
                 <li class="active">
                     <a class="navbar-link" href="/users/" th:href="@{~/users}">首页<span class="sr-only"></span></a>
                 </li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
             </ul>
+            <!-- 登陆判断-->
+            <div sec:authorize="isAuthenticated()" class="row navbar-right login-success-navbar">
+                <ul class="navbar-nav">
+                    <li class="navbar-text">
+                        <span class="navbar-link" sec:authentication="name"></span>
+                    </li>
+                </ul>
+                <form action="/logout" th:action="@{/logout}" method="post">
+                    <input class="btn navbar-btn" type="submit" value="退出">
+                </form>
+            </div>
+
+            <div sec:authorize="isAnonymous()">
+                <a href="/login" th:href="@{~/login}" class="btn navbar-btn navbar-right" type="submit">登陆</a>
+            </div>
+
         </div><!--/.nav-collapse -->
     </div>
 </nav>

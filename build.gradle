@@ -22,15 +22,21 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // 全文搜索引擎ElasticSearch
     implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+
     // 数据库驱动
     implementation 'mysql:mysql-connector-java:6.0.5'
-    // 
+    // jna
     implementation 'net.java.dev.jna:jna:4.3.0'
     // h2数据库
     runtime 'com.h2database:h2:1.4.193'
+
+    // SpringSecurity
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // Thymeleaf的 Spring Security依赖
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE'
+
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    // jdk9中这个类被移除了，需要自己加上
-//    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 
 }
 ext['thymeleaf.version'] = '3.0.3.RELEASE'
