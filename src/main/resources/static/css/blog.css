@@ -1,0 +1,38 @@
+/*辅助footer总保持在底部*/
+html {
+    height: 100%;
+}
+
+/*辅助footer总保持在底部*/
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 70px;
+}
+
+/* 辅助footer总保持在底部*/
+.content {
+    flex: 1;
+}
+
+/*内容靠中*/
+.blog-content-container {
+    margin-top: 2.0em;
+    background-color: #fff;
+}
+
+/*内容与顶的边距*/
+.body {
+    padding-top: 50px;
+}
+
+/*footer样式*/
+.footer {
+    min-width: 100%;
+    background-color: #f8f8f8;
+    padding: 15px;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+}

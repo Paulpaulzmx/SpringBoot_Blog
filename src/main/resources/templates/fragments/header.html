@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      th:fragment="header">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+<!--    <script src="/js/jquery-3.4.1.js"></script>-->
+    <script src="/js/bootstrap.js"></script>
+
+    <!-- 自定义css-->
+    <link rel="stylesheet" href="/css/blog.css">
+
+    <!-- BootStrap CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+
+
+    <!-- Tether core CSS -->
+    <link rel="stylesheet" href="/css/tether.min.css">
+
+    <!-- Font-Awesome CSS -->
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <!-- NProgress CSS-->
+    <link rel="stylesheet" href="/css/nprogress.css">
+    <!-- thinker-md CSS-->
+    <link rel="stylesheet" href="/css/thinker-md.vendor.css">
+    <!-- BootStrap tags CSS-->
+    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css">
+    <!-- Component-chosen CSS-->
+    <link rel="stylesheet" href="/css/component-chosen.css">
+    <!-- Toastr CSS-->
+    <link rel="stylesheet" href="/css/toastr.min.css">
+    <!-- cropBox CSS -->
+<!--    <link rel="stylesheet" href="/css/jquery.cropbox.css" th:href="@{/css/jquery.cropbox.css}">-->
+
 </head>
 <body>
-<div th:fragment="header">
-    <h1>Thymeleaf in action BLOG</h1>
-    <a href="/users">首页</a>
-</div>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/" th:href="@{~/}">Z5n's Blog</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a class="navbar-link" href="/users/" th:href="@{~/users}">首页<span class="sr-only"></span></a>
+                </li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
 </body>
 </html>
