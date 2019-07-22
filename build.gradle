@@ -35,6 +35,11 @@ dependencies {
     // Thymeleaf的 Spring Security依赖
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:3.0.2.RELEASE'
 
+    // 打开spring boot actuator 依赖
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    //添加apache commons lang依赖
+    implementation 'org.apache.commons:commons-lang3:3.5'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

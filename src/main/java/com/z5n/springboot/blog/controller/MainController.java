@@ -1,5 +1,6 @@
 package com.z5n.springboot.blog.controller;
 
+import com.z5n.springboot.blog.domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,7 +50,12 @@ public class MainController {
     }
 
     /**
-     * 用户注册
+     * 获取用户注册界面
+     * <p>
+     * 实际注册的{@code post}请求在{@link UserController}中的
+     * 新建用户方法{@link UserController#saveOrUpdateUser(User)}
+     * </p>
+     * @see com.z5n.springboot.blog.controller.UserController#saveOrUpdateUser(User)
      */
     @GetMapping("/register")
     public String register(){

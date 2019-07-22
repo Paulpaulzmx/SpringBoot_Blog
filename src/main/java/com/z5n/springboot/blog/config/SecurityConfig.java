@@ -39,7 +39,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        System.out.println("therer");
         auth.inMemoryAuthentication()   //认证信息存储与内存中
                 .withUser("z5n").password("123456").roles("ADMIN");
     }
