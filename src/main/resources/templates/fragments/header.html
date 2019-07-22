@@ -1,79 +1,68 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      th:fragment="header">
+<html lang="en" data-th-fragment="header">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-
-    <script src="/js/jquery-3.4.1.js"></script>
-    <script src="/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
-
-    <!-- 自定义css-->
-    <link rel="stylesheet" href="/css/blog.css" th:href="@{/css/blog.css}">
-
-    <!-- BootStrap CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Tether core CSS -->
-    <link rel="stylesheet" href="/css/tether.min.css" th:href="@{/css/tether.min.css}">
+    <link href="../../css/tether.min.css" th:href="@{/css/tether.min.css}" rel="stylesheet">
 
+    <!-- Bootstrap CSS -->
+    <link href="../../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+ 
     <!-- Font-Awesome CSS -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}">
-    <!-- NProgress CSS-->
-    <link rel="stylesheet" href="/css/nprogress.css" th:href="@{/css/nprogress.css}">
-    <!-- thinker-md CSS-->
-    <link rel="stylesheet" href="/css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}">
-    <!-- BootStrap tags CSS-->
-    <link rel="stylesheet" href="/css/bootstrap-tagsinput.css" th:href="@{/css/bootstrap-tagsinput.css}">
-    <!-- Component-chosen CSS-->
-    <link rel="stylesheet" href="/css/component-chosen.css" th:href="@{/css/component-chosen.css}">
-    <!-- Toastr CSS-->
-    <link rel="stylesheet" href="/css/toastr.min.css" th:href="@{/css/toastr.min.css}">
-    <!-- cropBox CSS -->
-    <link rel="stylesheet" href="/css/jquery.cropbox.css" th:href="@{/css/jquery.cropbox.css}">
-
+    <link href="../../css/font-awesome.min.css" th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+    
+    <!-- NProgress CSS -->
+    <link href="../../css/nprogress.css" th:href="@{/css/nprogress.css}" rel="stylesheet">
+    
+    <!-- thinker-md CSS -->
+    <link href="../../css/thinker-md.vendor.css" th:href="@{/css/thinker-md.vendor.css}" rel="stylesheet">
+    
+    <!-- bootstrap tags CSS -->
+    <link href="../../css/component-tageditor.css" th:href="@{/css/component-tageditor.css}" rel="stylesheet">
+    
+    <!-- bootstrap chosen CSS -->
+    <link href="../../css/component-chosen.min.css" th:href="@{/css/component-chosen.min.css}" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <link href="../../css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+    <link href="../../css/thymeleaf-bootstrap-paginator.css" th:href="@{/css/thymeleaf-bootstrap-paginator.css}"
+          rel="stylesheet">
+    <link href="../../css/blog.css" th:href="@{/css/blog.css}" rel="stylesheet">
 </head>
 <body>
-<!--模板header，实际上是一个navbar-->
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse bg-inverse navbar-toggleable-md">
     <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/" th:href="@{~/}">Z5n's Blog</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a class="navbar-link" href="/users/" th:href="@{~/users}">首页<span class="sr-only"></span></a>
-                </li>
-            </ul>
-            <!-- 登陆判断：认证用户-->
-            <div sec:authorize="isAuthenticated()" class="row navbar-right login-success-navbar">
-                <ul class="navbar-nav">
-                    <li class="navbar-text">
-                        <span class="navbar-link" sec:authentication="name"></span>
-                    </li>
-                </ul>
-                <form action="/logout" th:action="@{/logout}" method="post">
-                    <input class="btn navbar-btn" type="submit" value="退出">
-                </form>
-            </div>
-            <!--登陆判断：匿名用户（未认证用户）-->
-            <div sec:authorize="isAnonymous()">
-                <a href="/login" th:href="@{~/login}" class="btn navbar-btn navbar-right" type="submit">登陆</a>
-            </div>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarsContainer" aria-controls="navbarsExampleContainer" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/" th:href="@{/}">NewStarBlog</a>
 
-        </div><!--/.nav-collapse -->
+        <div class="collapse navbar-collapse" id="navbarsContainer">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/blogs?order=new&tag=1">最新 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/blogs?order=hot&tag=2">最热</a>
+                </li>
+                <form class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="搜索">
+                    <a href="/search?q=ww" class="btn btn-outline-secondary my-2 my-sm-0"><i class="fa fa-search"
+                                                                                                                                        aria-hidden="true"></i></a>
+                </form>
+
+            </ul>
+
+            <a href="/login" class="btn btn-outline-success my-2 my-sm-0" type="submit">登录</a>
+            <a href="/register" class="btn btn-outline-success my-2 my-sm-0" type="submit">注册</a>
+        </div>
+
     </div>
 </nav>
-
 </body>
 </html>
