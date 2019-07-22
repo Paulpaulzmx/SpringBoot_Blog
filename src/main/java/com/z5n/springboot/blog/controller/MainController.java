@@ -12,25 +12,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
 
-    // 访问主页，重定向到index
+    /**
+     * 访问主页，重定向到index
+     */
     @GetMapping("/")
     public String root(){
         return "redirect:/index";
     }
 
-    // 主页
+    /**
+     * 主页
+     */
     @GetMapping("/index")
     public String index(){
         return "index";
     }
 
-    // 登录页（登陆成功）
+    /**
+     * 登录页面
+     */
     @GetMapping("/login")
     public String login(){
         return "login";
     }
 
-    // 登陆失败，重定向到login
+    /**
+     * 登陆失败，重定向到login
+     * @param model loginError用于标记登陆失败，errMessage失败信息.
+     * @return 回到login，重新登陆
+     */
     @GetMapping("/login-error")
     public String loginError(Model model){
         model.addAttribute("loginError", true);
@@ -38,7 +48,9 @@ public class MainController {
         return "login";
     }
 
-    // 用户注册
+    /**
+     * 用户注册
+     */
     @GetMapping("/register")
     public String register(){
         return "register";

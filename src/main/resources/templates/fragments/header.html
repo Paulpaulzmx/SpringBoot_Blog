@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-        <script src="/js/jquery-3.4.1.js"></script>
+    <script src="/js/jquery-3.4.1.js"></script>
     <script src="/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
 
     <!-- 自定义css-->
@@ -36,7 +36,7 @@
 
 </head>
 <body>
-
+<!--模板header，实际上是一个navbar-->
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -55,7 +55,7 @@
                     <a class="navbar-link" href="/users/" th:href="@{~/users}">首页<span class="sr-only"></span></a>
                 </li>
             </ul>
-            <!-- 登陆判断-->
+            <!-- 登陆判断：认证用户-->
             <div sec:authorize="isAuthenticated()" class="row navbar-right login-success-navbar">
                 <ul class="navbar-nav">
                     <li class="navbar-text">
@@ -66,7 +66,7 @@
                     <input class="btn navbar-btn" type="submit" value="退出">
                 </form>
             </div>
-
+            <!--登陆判断：匿名用户（未认证用户）-->
             <div sec:authorize="isAnonymous()">
                 <a href="/login" th:href="@{~/login}" class="btn navbar-btn navbar-right" type="submit">登陆</a>
             </div>

@@ -8,6 +8,7 @@
 <body class="body">
 <div class="container blog-content-container content">
 
+    <!-- 登陆表单 -->
     <form th:action="@{/login}" method="post">
         <h2>请登录</h2>
 
@@ -22,6 +23,8 @@
         <div class="form-group col-md-5">
             <input type="submit" class="btn btn-primary">
         </div>
+
+        <!--  登陆失败显示错误信息-->
         <div class="col-md-5" th:if="${loginError}">
             <p th:text="${errMessage}">
         </div>
